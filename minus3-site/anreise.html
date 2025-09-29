@@ -1,0 +1,53 @@
+
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anreise – minus 3</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+</head>
+<body>
+  
+<header class="site-header">
+  <a class="brand" href="/"><img src="assets/logo.png" alt="minus 3 Logo" /><span>minus 3</span></a>
+  <nav>
+    <a href="/">Programm</a>
+    <a href="galerie.html">Galerie</a>
+    <a aria-current="page" href="anreise.html">Anreise</a>
+    <a href="about.html">Über uns</a>
+    <a href="partner.html">Partner</a>
+    <a href="contact.html">Kontakt</a>
+  </nav>
+</header>
+
+
+  <main class="container narrow">
+    <h1>Anreise</h1>
+    <p class="muted">So kommst du am besten zu uns.</p>
+    <div class="map-wrap" aria-label="Karte">
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=minus%203%2C%20Bern&output=embed"></iframe>
+    </div>
+    <h2>ÖV</h2>
+    <ul>
+      <li><strong>Nächste Haltestelle:</strong> Beispielplatz (Tram/Bus)</li>
+      <li><strong>Ab Bern HB:</strong> Tram 9 Richtung Wabern bis Beispielplatz, 3 Minuten zu Fuss</li>
+    </ul>
+    <h2>Velo</h2>
+    <ul>
+      <li>Veloabstellplätze direkt vor dem Eingang</li>
+      <li>Bitte Durchgänge freihalten</li>
+    </ul>
+    <h2>Auto</h2>
+    <ul>
+      <li>Keine eigenen Parkplätze. Empfohlen: Parkhaus Beispiel, 5 Minuten zu Fuss</li>
+    </ul>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> minus 3</p>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
