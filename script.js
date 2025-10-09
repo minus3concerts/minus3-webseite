@@ -68,3 +68,33 @@ async function initPastPage(){
   const el=document.getElementById('gallery'); if(!el) return; const past=await loadJSON('data/past.json');
   el.innerHTML=''; past.forEach(item=>{ const fig=document.createElement('figure'); fig.innerHTML=`<img src="${item.src}" alt="${item.caption||'Vergangenes Event'}" loading="lazy"/><figcaption>${item.caption||''}</figcaption>`; el.appendChild(fig); });
 }
+(function initMobileNav(){
+  const header = document.querySelector('.site-header');
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-header nav');
+  if(!header || !btn || !nav) return;
+
+  const close = () => {
+    header.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  };
+  const open = () => {
+    header.classList.add('nav-open');
+    btn.setAttribute('aria-expanded', 'true');
+  };
+  btn.addEventListener('click', () => {
+    header.classList.contains('nav-open') ? close() : open();
+  });
+  // bei Resize > 820 wieder schliessen
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 820) close();
+  });
+  // schliessen beim Klick auf einen Link (nur mobil)
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a') && window.innerWidth <= 820) close();
+  });
+  // ESC schliesst
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+})();
