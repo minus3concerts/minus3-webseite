@@ -325,3 +325,12 @@ h1, h2, h3 { line-height: 1.2; }
     transform: none !important;
   }
 }
+/* Button nach rechts schieben */
+.nav-toggle { margin-left: auto; }
+
+/* Mobil Reihenfolge sauber: Brand links, Button rechts, Nav darunter */
+@media (max-width: 820px){
+  .brand { order: 1; }
+  .nav-toggle { order: 2; }
+  .site-header nav { order: 3; width: 100%; }
+}
