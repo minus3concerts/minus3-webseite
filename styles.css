@@ -320,3 +320,41 @@ h1, h2, h3 { line-height: 1.2; }
     transform: none !important;
   }
 }
+/* === MOBILE HEADER LAYOUT: Brand links, Burger rechts, Nav darunter === */
+@media (max-width: 820px){
+  .site-header{
+    align-items: center;
+    justify-content: space-between; /* Brand links, Burger rechts */
+    flex-wrap: wrap;                /* << wichtig: Nav in die nächste Zeile */
+    gap: .6rem;
+  }
+
+  .brand     { order: 1; }
+  .nav-toggle{
+    order: 2;
+    display: inline-block;
+    margin-left: 0;                /* auto raus, space-between reicht */
+  }
+  .site-header nav{
+    order: 3;
+    width: 100%;
+    /* eingeklappt + animierbar */
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    margin-top: .5rem;
+
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    overflow: hidden;
+    transition: max-height .35s ease, opacity .25s ease, transform .35s ease;
+    will-change: max-height, opacity, transform;
+  }
+  .site-header.nav-open nav{
+    max-height: 60vh;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .site-header nav a{ padding: .6rem .75rem; border-radius: .6rem; }
+}
