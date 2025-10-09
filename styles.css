@@ -285,3 +285,43 @@ h1, h2, h3 { line-height: 1.2; }
   }
   .site-header nav a { padding: .6rem .75rem; border-radius: .6rem; }
 }
+/* Mobile: Menue ein- und ausklappen mit sanfter Animation */
+@media (max-width: 820px){
+  .nav-toggle { display: inline-block; }
+
+  /* Ausgangszustand: zugeklappt */
+  .site-header nav {
+    /* statt display:none → animierbar machen */
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    overflow: hidden;
+
+    transition:
+      max-height .35s ease,
+      opacity .25s ease,
+      transform .35s ease;
+    will-change: max-height, opacity, transform;
+    width: 100%;
+    margin-top: .5rem;
+  }
+
+  /* geoeffnet */
+  .site-header.nav-open nav {
+    max-height: 60vh;   /* genug Platz fuer alle Links */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bessere Zugänglichkeit: reduced motion respektieren */
+@media (prefers-reduced-motion: reduce){
+  .site-header nav {
+    transition: none !important;
+    transform: none !important;
+  }
+}
