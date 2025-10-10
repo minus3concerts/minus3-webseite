@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="de">
 <head>
@@ -23,19 +22,112 @@
   </nav>
 </header>
 
+<main class="container narrow">
+  <h1>Kontakt</h1>
 
+  <p>Schreib uns gerne eine Mail:</p>
+  <p><a class="btn" href="mailto:minus3concert@gmail.com?subject=Anfrage%20Konzert">minus3concert@gmail.com</a></p>
 
-  <main class="container narrow">
-    <h1>Kontakt</h1>
-    <p>Schreib uns gerne eine Mail:</p>
-    <p><a class="btn" href="mailto:info@minus3.ch?subject=Anfrage%20Konzert">info@minus3.ch</a></p>
-    <h2>Adresse</h2>
-    <p>minus 3<br>Strasse 1<br>3000 Bern</p>
-  </main>
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> minus 3</p>
-  </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="script.js" defer></script>
+  <h2>Adresse</h2>
+  <p>minus 3<br>Strasse 1<br>3000 Bern</p>
+
+  <h2>Band-Anfrage</h2>
+  <p class="muted">Bewirb dich für einen Gig bei minus 3 – wir melden uns per E-Mail.</p>
+
+  <form id="bandForm" class="form" action="https://formspree.io/f/mwprrbed" method="POST">
+    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" />
+
+    <div class="field">
+      <label for="band">Bandname *</label>
+      <input id="band" name="Bandname" type="text" required />
+    </div>
+
+    <div class="field">
+      <label for="genres">Genre(s) *</label>
+      <input id="genres" name="Genres" type="text" placeholder="z. B. Indie Rock; Post-Punk" required />
+    </div>
+
+    <div class="field">
+      <label for="bio">Kurze Bio / Beschreibung *</label>
+      <textarea id="bio" name="Bio" rows="5" required></textarea>
+    </div>
+
+    <fieldset class="links">
+      <legend>Links (optional)</legend>
+      <div class="field"><label for="instagram">Instagram</label><input id="instagram" name="Instagram" type="url" placeholder="https://instagram.com/…" /></div>
+      <div class="field"><label for="youtube">YouTube</label><input id="youtube" name="YouTube" type="url" placeholder="https://youtube.com/…" /></div>
+      <div class="field"><label for="spotify">Spotify</label><input id="spotify" name="Spotify" type="url" placeholder="https://open.spotify.com/…" /></div>
+      <div class="field"><label for="apple">Apple Music</label><input id="apple" name="Apple Music" type="url" placeholder="https://music.apple.com/…" /></div>
+      <div class="field"><label for="weitere">Weiterer Link</label><input id="weitere" name="Weiterer Link" type="url" placeholder="https://…" /></div>
+    </fieldset>
+
+    <div class="field">
+      <label for="email">E-Mail *</label>
+      <input id="email" name="Email" type="email" required />
+    </div>
+
+    <div class="field">
+      <label for="phone">Telefon</label>
+      <input id="phone" name="Telefon" type="tel" placeholder="+41 …" />
+    </div>
+
+    <div class="field">
+      <label for="message">Nachricht an uns *</label>
+      <textarea id="message" name="Nachricht" rows="4" required></textarea>
+    </div>
+
+    <input type="hidden" name="_subject" value="Neue Band-Anfrage über minus3.ch" />
+    <input type="hidden" name="_language" value="de" />
+
+    <label class="consent">
+      <input type="checkbox" required />
+      Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme und Planung gespeichert und per E-Mail an minus 3 übermittelt werden.
+    </label>
+
+    <button class="btn" type="submit">Anfrage senden</button>
+    <p id="formMsg" class="muted" role="status" aria-live="polite" style="margin-top:.6rem;"></p>
+  </form>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> minus 3</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script src="script.js" defer></script>
+
+<!-- Formular-Feedback -->
+<script>
+  (function(){
+    const form = document.getElementById('bandForm');
+    if(!form) return;
+    const msg = document.getElementById('formMsg');
+
+    form.addEventListener('submit', async (e) => {
+      if (form.querySelector('.hp').value) { e.preventDefault(); return; } // Honeypot
+      e.preventDefault();
+      msg.textContent = 'Sende …';
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        });
+        if (res.ok) {
+          form.reset();
+          msg.textContent = 'Danke! Deine Anfrage ist bei uns eingetroffen. Wir melden uns per E-Mail.';
+        } else {
+          msg.textContent = 'Upps – das hat nicht geklappt. Versuch es später noch einmal oder schreib direkt an minus3concert@gmail.com.';
+        }
+      } catch {
+        msg.textContent = 'Netzwerkfehler. Bitte später erneut versuchen oder per E-Mail kontaktieren.';
+      }
+    });
+  })();
+</script>
 </body>
 </html>
