@@ -358,3 +358,89 @@ h1, h2, h3 { line-height: 1.2; }
   }
   .site-header nav a{ padding: .6rem .75rem; border-radius: .6rem; }
 }
+/* ===== Modernes, dunkles Formular ===== */
+.form{
+  display:grid; gap:1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.1rem;
+}
+
+/* Felder: dunkler, sanfte Ränder, schöner Fokus */
+.field{ display:grid; gap:.35rem; }
+.field label{ font-size:.95rem; color:var(--fg); }
+
+.field input,
+.field textarea{
+  width:100%;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  border-radius: .6rem;
+  padding: .75rem .85rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.field input::placeholder,
+.field textarea::placeholder{ color: var(--muted); }
+
+.field input:focus,
+.field textarea:focus{
+  border-color: color-mix(in oklab, var(--accent) 60%, var(--border));
+  box-shadow: 0 0 0 .16rem color-mix(in oklab, var(--accent) 35%, transparent);
+}
+
+/* Validierung subtil */
+.field input:invalid,
+.field textarea:invalid{
+  border-color: color-mix(in oklab, #ff7b7b 45%, var(--border));
+}
+
+/* Textarea angenehmer */
+.field textarea{ min-height: 120px; resize: vertical; }
+
+/* Link-Gruppe: nicht so „kastenhaft“, in Grid aufteilen */
+.links{
+  margin-top:.2rem;
+  border: 1px solid var(--border);
+  border-radius: .8rem;
+  padding: .9rem;
+  background: linear-gradient(0deg, rgba(255,255,255,.02), transparent);
+}
+.links legend{
+  padding:0 .4rem; color: var(--muted); font-size:.9rem; letter-spacing:.02em;
+}
+.links .field{ margin:0; }
+@media (min-width: 760px){
+  .links{ display:grid; gap:.7rem; }
+  .links .field{ display:block; } /* Labels oben lassen */
+  .links{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Einverständnis-Checkbox hübscher ausrichten */
+.consent{
+  display:flex; gap:.6rem; align-items:flex-start;
+  color: var(--muted); font-size:.95rem;
+}
+.consent input{ transform: translateY(.15rem); }
+
+/* Submit-Button: breiter auf Mobile */
+@media (max-width:640px){
+  .form .btn{ width:100%; text-align:center; }
+}
+
+/* Chrome/Edge Autofill auf dunkel zähmen */
+.field input:-webkit-autofill,
+.field textarea:-webkit-autofill{
+  -webkit-text-fill-color: var(--fg);
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg-soft) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Kleiner optischer Feinschliff für die Form-Ränder */
+.form,
+.partner-card,
+.card{ box-shadow: 0 6px 24px rgba(0,0,0,.25); }
