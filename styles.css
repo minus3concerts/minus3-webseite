@@ -458,5 +458,6 @@ h1, h2, h3 { line-height: 1.2; }
 }
 /* Spezieller Zuschnitt nur für Will */
 .portrait-top {
-  object-position: center top; /* zeigt den oberen Bildbereich */
+  object-position: center 20%;
 }
+
