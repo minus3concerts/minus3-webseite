@@ -57,7 +57,26 @@ async function initEventPage(){
   document.getElementById('eventStart').textContent=ev.start_time||'-';
   document.getElementById('eventVenue').textContent=[ev.venue,ev.address].filter(Boolean).join(', ');
   const desc=document.getElementById('eventDesc'); desc.innerHTML=(ev.description||'').split('\n').map(p=>`<p>${p}</p>`).join('');
-  const ticket=document.getElementById('ticketLink'); ticket.href=ev.ticket_url||'#'; ticket.textContent=ev.ticket_cta||'Tickets';
+  const ticket = document.getElementById('ticketLink');
+// Es gibt KEINEN Online-Verkauf → Button wird zur Info-Schaltfläche (ohne Link)
+ticket.removeAttribute('target');
+ticket.removeAttribute('rel');
+ticket.removeAttribute('href');
+ticket.classList.add('ghost');
+ticket.textContent = 'Tickets: Abendkasse';
+ticket.addEventListener('click', (e)=> e.preventDefault());
+
+// Hinweis unter den Buttons einfügen
+const note = document.createElement('div');
+note.className = 'ticket-note';
+note.innerHTML = `
+  <strong>Tickets</strong><br>
+  Verkauf ausschliesslich an der Abendkasse.<br>
+  Bezahlung: Bar, TWINT oder Karte.<br>
+  <span class="muted">Alle Einnahmen aus dem Ticketverkauf werden als Gage fair unter den Bands aufgeteilt.</span>
+`;
+document.querySelector('.cta-row')?.after(note);
+
   const cal=document.getElementById('calLink'); cal.addEventListener('click', e=>{ e.preventDefault(); const url=makeICS(ev); const a=document.createElement('a'); a.href=url; a.download=`${slugify(ev.title)}.ics`; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1500); });
   const wrap=document.getElementById('artists'); (ev.artists||[]).forEach(a=>{ const row=document.createElement('div'); row.className='artist';
     row.innerHTML=`${a.image?`<img src="${a.image}" alt="${a.name}" />`:'<div></div>'}<div><div><strong>${a.name}</strong>${a.role?` – ${a.role}`:''}</div>${a.links?`<div class="muted">${a.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`).join(' • ')}</div>`:''}</div>`;
