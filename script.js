@@ -73,7 +73,8 @@ async function initProgramPage(){
       a.href = `event.html?id=${encodeURIComponent(ev.id)}`;
       a.className = 'card';
       a.innerHTML = `
-        <div class="thumb">${ev.image ? `<img src="${ev.image}" alt="${ev.title}" loading="lazy"/>` : ''}</div>
+        ${ev.image ? `<img src="${ev.image}" alt="${ev.title}" loading="lazy"
+  style="object-position:${ev.image_pos || 'center'};">` : ''}
         <div class="content">
           <div class="meta">${formatDate(ev.date)} • ${ev.city || ''}</div>
           <h3>${ev.title}</h3>
