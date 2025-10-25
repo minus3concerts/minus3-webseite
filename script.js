@@ -72,12 +72,20 @@ async function initProgramPage(){
       const a = document.createElement('a');
       a.href = `event.html?id=${encodeURIComponent(ev.id)}`;
       a.className = 'card';
+
+      // Titel optional am " + " umbrechen. Wenn du das nicht willst, nimm einfach ev.title.
+      const titleHTML = (ev.title || '').replace(' + ', '<br>');
+
+      // object-position aus JSON (z. B. "50% 20%"), sonst zentriert
+      const pos = ev.image_pos && String(ev.image_pos).trim() ? ev.image_pos : 'center';
+
       a.innerHTML = `
-        ${ev.image ? `<img src="${ev.image}" alt="${ev.title}" loading="lazy"
-  style="object-position:${ev.image_pos || 'center'};">` : ''}
+        <div class="thumb">
+          ${ev.image ? `<img src="${ev.image}" alt="${ev.title}" loading="lazy" style="object-position:${pos};">` : ''}
+        </div>
         <div class="content">
           <div class="meta">${formatDate(ev.date)} • ${ev.city || ''}</div>
-          <h3>${ev.title}</h3>
+          <h3>${titleHTML}</h3>
           <div class="meta">${ev.venue || ''}${ev.genre ? ' • ' + ev.genre : ''}</div>
         </div>`;
       list.appendChild(a);
@@ -116,7 +124,15 @@ async function initEventPage(){
 
   // Hero-Bild
   const img = document.getElementById('eventImage');
-  if(ev.image){ img.src = ev.image; img.alt = ev.title; } else { img.style.display = 'none'; }
+  if(ev.image){
+    img.src = ev.image;
+    img.alt = ev.title;
+    // Wenn du auch auf der Detailseite croppen willst, kannst du hier optional:
+    // img.style.objectFit = 'cover';
+    // img.style.objectPosition = ev.image_pos || 'center';
+  } else {
+    img.style.display = 'none';
+  }
 
   // Textfelder
   document.getElementById('eventTitle').textContent     = ev.title;
