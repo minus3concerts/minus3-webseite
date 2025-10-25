@@ -10,7 +10,7 @@
     "venue": "minus 3",
     "address": "Freiburgstrasse 139c, 3008 Bern",
     "genre": "Metal",
-    "image": "assets/hero.jpg",
+    "image": "assets/BeyondD.jpg",
     "description": "Ein harter Metal-Abend mit Beyond Dystopia (metal) und Antipodes (metal).",
   "artists": [
     { "name": "Beyond Dystopia", "role": "Headliner" },
@@ -28,7 +28,7 @@
     "venue": "minus 3",
     "address": "Freiburgstrasse 139c, 3008 Bern",
     "genre": "Metalcore",
-    "image": "assets/past5.jpg",
+    "image": "assets/DaysOR.jpg",
     "description": "Metalcoreabend mit Band Days of Ruinn & This Burning Sky.",
     "artists": [
     { "name": "Days of Ruin", "role": "Headliner" },
@@ -46,7 +46,7 @@
     "venue": "minus 3",
     "address": "Freiburgstrasse 139c, 3008 Bern",
     "genre": "Alternative Rock",
-    "image": "assets/past3.jpg",
+    "image": "assets/FromAshes.jpg",
     "description": "Ein lauter Rock-Abend mit From Ashes to Earth & Shortcut 2 Infinity.",
      "artists": [
     { "name": "From Ashes to Earth", "role": "Headliner" },
