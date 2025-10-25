@@ -1,7 +1,7 @@
 [
   {
     "id": "2025-10-25-bern-konzert-x",
-    "title": "Beyond Dystopia <br>&<br> Antipodes",
+    "title": "Beyond Dystopia <br> <br>Antipodes",
     "date": "2025-12-20",
     "door_time": "19:00",
     "start_time": "20:00",
@@ -20,7 +20,7 @@
   },
   {
     "id": "2025-11-30-bern-konzert-y",
-    "title": "Days of Ruin <br>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤThis Burning Sky",
+    "title": "Days of Ruin <br> <br>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤThis Burning Sky",
     "date": "2026-01-24",
     "door_time": "18:30",
     "start_time": "19:30",
@@ -38,7 +38,7 @@
   },
   {
     "id": "2025-12-20-bern-konzert-z",
-    "title": "From Ashes to Earth + Shortcut 2 Infinity",
+    "title": "From Ashes to Earth<br> <br>Shortcut 2 Infinity",
     "date": "2026-02-28",
     "door_time": "19:00",
     "start_time": "20:00",
@@ -57,7 +57,7 @@
   },
     {
     "id": "2025-12-20-bern-konzert-u",
-    "title": "Leave The Ghosts Behind + Band X",
+    "title": "Leave The Ghosts Behind<br> <br>Band X",
     "date": "2026-03-28",
     "door_time": "19:00",
     "start_time": "20:00",
