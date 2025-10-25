@@ -566,5 +566,52 @@ h1, h2, h3 { line-height: 1.2; }
   0%, 100% { transform: translate(-50%, 0); }
   50% { transform: translate(-50%, -8px); }
 }
+/* Hero schön gross und zentriert */
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Logo-Style */
+.hero-logo {
+  width: clamp(220px, 25vw, 420px);
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.6));
+  animation: fadeIn 1.6s ease;
+}
+
+/* Untertitel */
+.hero .subtitle {
+  margin-top: .5rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  line-height: 1.4;
+}
+
+/* Scroll-Pfeil */
+.scroll-cue {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  color: var(--fg);
+  opacity: 0.55;
+  text-decoration: none;
+  animation: bounce 2.2s ease-in-out infinite;
+  transition: opacity .25s ease;
+}
+
+.scroll-cue:hover { opacity: 1; }
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
+}
 
 
