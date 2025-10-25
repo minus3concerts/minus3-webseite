@@ -492,4 +492,22 @@ h1, h2, h3 { line-height: 1.2; }
 .card:hover .thumb img {
   transform: scale(1.04);  /* leichter Zoom beim Hover */
 }
+/* === Hero-Logo statt Texttitel === */
+.hero-logo {
+  width: min(280px, 60%);
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.6));
+  animation: fadeIn 1.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* optional: auf Mobile etwas kleiner */
+@media (max-width: 640px){
+  .hero-logo { width: 70%; }
+}
 
