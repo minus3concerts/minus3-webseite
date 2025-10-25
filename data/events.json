@@ -11,7 +11,7 @@
     "address": "Freiburgstrasse 139c, 3008 Bern",
     "genre": "Metal",
     "image": "assets/BeyondD.jpeg",
-    "image_pos": "50% 20%"
+    "image_pos": "50% 20%",
     "description": "Ein harter Metal-Abend mit Beyond Dystopia (metal) und Antipodes (metal).",
   "artists": [
     { "name": "Beyond Dystopia", "role": "Headliner" },
@@ -48,7 +48,7 @@
     "address": "Freiburgstrasse 139c, 3008 Bern",
     "genre": "Alternative Rock",
     "image": "assets/FromAshes.jpg",
-    "image_pos": "50% 20%"
+    "image_pos": "50% 20%",
     "description": "Ein lauter Rock-Abend mit From Ashes to Earth & Shortcut 2 Infinity.",
      "artists": [
     { "name": "From Ashes to Earth", "role": "Headliner" },
