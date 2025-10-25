@@ -1,7 +1,8 @@
 [
   {
     "id": "2025-10-25-bern-konzert-x",
-    "title": "Konzert X – Bandname",
+    "title": "Beyond Dystopia (Metal)\n
+    Antipodes (Metal)",
     "date": "2025-10-25",
     "door_time": "19:00",
     "start_time": "20:00",
@@ -9,11 +10,12 @@
     "city": "Bern",
     "venue": "minus 3",
     "address": "Freiburgstrasse 139c, 3008 Bern",
-    "genre": "Rock",
+    "genre": "Metal",
     "image": "assets/hero.jpg",
-    "description": "Ein rockiger Abend mit Band X.",
-    "artists": [
-      { "name": "Band X", "role": "Headliner" }
+    "description": "Ein harter Metal-Abend mit Beyond Dystopia (Headliner) und Antipodes (Support).",
+  "artists": [
+    { "name": "Beyond Dystopia", "role": "Headliner" },
+    { "name": "Antipodes", "role": "Support" }
     ]
   },
   {
