@@ -512,5 +512,36 @@ h1, h2, h3 { line-height: 1.2; }
 @media (max-width: 640px){
   .hero-logo { width: 60%; }
 }
+/* Make hero tall on desktop, so the next section is below the fold */
+.hero{
+  min-height: 78svh;           /* good default for most screens */
+}
+
+@media (min-width: 1024px){
+  .hero{
+    min-height: 88svh;         /* bigger on laptops/desktops */
+  }
+}
+
+/* Center content and add a little vertical spacing */
+.hero .container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;                   /* space between logo and subtitle */
+}
+
+/* Responsive logo size: small on mobile, big on desktop */
+.hero-logo{
+  width: clamp(220px, 22vw, 420px);   /* grows with viewport */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Slightly tighter subtitle */
+.hero .subtitle{
+  margin-top: .2rem;
+}
 
 
