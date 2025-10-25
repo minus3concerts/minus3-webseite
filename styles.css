@@ -472,4 +472,24 @@ h1, h2, h3 { line-height: 1.2; }
   line-height: 1.55;
 }
 .ticket-note strong{ color: var(--fg); }
+.card .thumb {
+  aspect-ratio: 16 / 9;   /* gleiches Seitenverhältnis für alle Karten */
+  background: #0f1116;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* füllt das Rechteck, schneidet ggf. */
+  object-position: center; /* zentriert den Ausschnitt */
+  transition: transform .4s ease;
+}
+
+.card:hover .thumb img {
+  transform: scale(1.04);  /* leichter Zoom beim Hover */
+}
 
