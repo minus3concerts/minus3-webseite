@@ -494,7 +494,7 @@ h1, h2, h3 { line-height: 1.2; }
 }
 /* === Hero-Logo statt Texttitel === */
 .hero-logo {
-  width: min(280px, 60%);
+  width: min(180px, 45%);
   max-width: 100%;
   height: auto;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,.6));
@@ -508,6 +508,6 @@ h1, h2, h3 { line-height: 1.2; }
 
 /* optional: auf Mobile etwas kleiner */
 @media (max-width: 640px){
-  .hero-logo { width: 70%; }
+  .hero-logo { width: 60%; }
 }
 
