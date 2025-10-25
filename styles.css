@@ -494,7 +494,7 @@ h1, h2, h3 { line-height: 1.2; }
 }
 /* === Hero-Logo statt Texttitel === */
 .hero-logo {
-  width: min(210px, 50%);
+  width: min(240px, 55%);
   max-width: 100%;
   height: auto;
   display: block;       /* <-- NEU: sorgt dafür, dass margin wirkt */
