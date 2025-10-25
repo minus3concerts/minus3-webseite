@@ -613,5 +613,17 @@ h1, h2, h3 { line-height: 1.2; }
   0%, 100% { transform: translate(-50%, 0); }
   50% { transform: translate(-50%, -8px); }
 }
+/* Nur auf dem Handy */
+@media (max-width: 640px) {
+  .hero .subtitle {
+    font-size: 1.2rem;        /* etwas grösser */
+    line-height: 1.5;
+  }
+@media (max-width: 640px) {
+  .break-mobile::after {
+    content: "\A";          /* Zeilenumbruch */
+    white-space: pre;
+  }
+}
 
 
