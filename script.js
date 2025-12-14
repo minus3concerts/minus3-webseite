@@ -74,7 +74,11 @@ async function initProgramPage(){
       a.className = 'card';
 
       // Titel optional am " + " umbrechen. Wenn du das nicht willst, nimm einfach ev.title.
-      const titleHTML = (ev.title || '').replace(' + ', '<br>');
+      const titleHTML = (ev.title || '')
+  .replace(/\\n/g, '\n')     // falls irgendwo "\\n" drin ist
+  .replace(/\n/g, '<br>')    // echte Umbrüche -> <br>
+  .replace(' + ', '<br>');   // falls du das noch brauchst
+
 
       // object-position aus JSON (z. B. "50% 20%"), sonst zentriert
       const pos = ev.image_pos && String(ev.image_pos).trim() ? ev.image_pos : 'center';
@@ -135,7 +139,7 @@ async function initEventPage(){
   }
 
   // Textfelder
-  document.getElementById('eventTitle').textContent     = ev.title;
+  document.getElementById('eventTitle').textContent = (ev.title || '').replace(/\\n/g, '\n');
   document.getElementById('eventSubtitle').textContent  = [ev.city, ev.venue].filter(Boolean).join(' • ');
   document.getElementById('eventDate').textContent      = formatDate(ev.date);
   document.getElementById('eventDoor').textContent      = ev.door_time || '-';
