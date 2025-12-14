@@ -81,86 +81,46 @@
       font-size: .95rem;
     }
 
-    /* Embedded preview: fixed height, click to open overlay */
-    .pdf-preview{
-      width: 100%;
-      height: 420px;
-      border: 0;
-      display: block;
-      background: #0f1116;
-    }
-    @media (max-width: 640px){
-      .pdf-preview{ height: 340px; }
-    }
-
-    /* Fullscreen overlay */
-    .overlay{
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      display: none;
-      background: rgba(0,0,0,.72);
-      backdrop-filter: blur(10px);
-    }
-    .overlay.open{ display: grid; place-items: center; }
-
-    .overlay-inner{
-      width: min(1100px, 92vw);
-      height: min(92vh, 900px);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,.55);
-      display: grid;
-      grid-template-rows: auto 1fr;
-    }
-
-    .overlay-bar{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: .75rem;
-      padding: .75rem .9rem;
-      background: rgba(255,255,255,.02);
-      border-bottom: 1px solid var(--border);
-    }
-    .overlay-bar .left{
+    .quick-actions{
       display: flex;
       flex-wrap: wrap;
-      gap: .45rem;
-      align-items: center;
-      color: var(--muted);
-      font-size: .95rem;
+      gap: .6rem;
+      margin-top: .9rem;
     }
-    .overlay-bar .left strong{ color: var(--fg); }
 
-    .icon-btn{
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--fg);
-      padding: .55rem .75rem;
-      border-radius: .7rem;
-      cursor: pointer;
-      font-weight: 700;
-    }
-    .icon-btn:hover{ filter: brightness(1.08); }
-
-    .overlay-pdf{
-      width: 100%;
-      height: 100%;
-      border: 0;
+    /* NEW: image preview (always shows full page nicely) */
+    .pdf-preview-link{
       display: block;
       background: #0f1116;
+      cursor: zoom-in;
+      text-decoration: none;
     }
-
-    /* Make overlay truly fullscreen on small phones */
-    @media (max-width: 560px){
-      .overlay-inner{
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
-      }
+    .pdf-preview-img{
+      width: 100%;
+      height: 420px;
+      object-fit: contain; /* shows full page */
+      display: block;
+      background: #0f1116;
+      border: 0;
+      transition: transform .18s ease, filter .18s ease;
+    }
+    @media (max-width: 640px){
+      .pdf-preview-img{ height: 340px; }
+    }
+    .pdf-preview-link:hover .pdf-preview-img{
+      transform: scale(1.01);
+      filter: brightness(1.05);
+    }
+    .pdf-preview-caption{
+      padding: .7rem 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .95rem;
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     /* small helper list style */
@@ -170,13 +130,6 @@
       color: var(--fg);
     }
     .clean-list li{ margin: .25rem 0; }
-
-    .quick-actions{
-      display: flex;
-      flex-wrap: wrap;
-      gap: .6rem;
-      margin-top: .9rem;
-    }
   </style>
 </head>
 
@@ -205,7 +158,7 @@
 
   <div class="info-grid">
 
-    <!-- LEFT: PDF + Tech -->
+    <!-- LEFT: Techrider -->
     <section class="panel">
       <h2>Techrider (PDF)</h2>
 
@@ -213,7 +166,7 @@
         <div class="pdf-head">
           <div class="meta">
             <div class="title">minus 3 – Techrider</div>
-            <div class="hint">Tippen/Klicken zum Vergrössern (Handy: fullscreen)</div>
+            <div class="hint">Tippen/Klicken auf die Vorschau öffnet den Rider in einem neuen Tab.</div>
           </div>
 
           <div class="quick-actions">
@@ -222,13 +175,25 @@
           </div>
         </div>
 
-        <!-- Preview: click opens overlay -->
-        <iframe
-          class="pdf-preview"
-          id="techriderPreview"
-          src="assets/techrider-minus3.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=0"
-          title="Techrider Vorschau"
-        ></iframe>
+        <!-- NEW: Image preview that links to the PDF (new tab) -->
+        <a
+          class="pdf-preview-link"
+          href="assets/techrider-minus3.pdf"
+          target="_blank"
+          rel="noopener"
+          aria-label="Techrider als PDF im neuen Tab öffnen"
+        >
+          <img
+            class="pdf-preview-img"
+            src="assets/techrider_seite1.png"
+            alt="Techrider Vorschau (Seite 1)"
+            loading="lazy"
+          />
+          <div class="pdf-preview-caption">
+            <span>Vorschau (Seite 1)</span>
+            <span class="tag">öffnet PDF</span>
+          </div>
+        </a>
       </div>
 
       <div class="callouts">
@@ -326,30 +291,6 @@
   </section>
 </main>
 
-<!-- Fullscreen overlay for PDF -->
-<div class="overlay" id="pdfOverlay" aria-hidden="true">
-  <div class="overlay-inner" role="dialog" aria-modal="true" aria-label="Techrider Vollbild">
-    <div class="overlay-bar">
-      <div class="left">
-        <strong>Techrider</strong>
-        <span class="tag">PDF</span>
-        <span class="muted">ESC zum Schliessen</span>
-      </div>
-      <div class="right" style="display:flex; gap:.5rem; align-items:center;">
-        <a class="icon-btn" href="assets/techrider-minus3.pdf" target="_blank" rel="noopener">Neu öffnen</a>
-        <button class="icon-btn" id="closeOverlay" type="button" aria-label="Schliessen">Schliessen ✕</button>
-      </div>
-    </div>
-
-    <iframe
-      class="overlay-pdf"
-      id="overlayPdfFrame"
-      src="assets/techrider-minus3.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=0"
-      title="Techrider Vollbild"
-    ></iframe>
-  </div>
-</div>
-
 <footer class="site-footer">
   <p>&copy; <span id="year"></span> minus 3</p>
 </footer>
@@ -358,53 +299,6 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 <script src="script.js" defer></script>
-
-<!-- Page-local JS: PDF overlay -->
-<script>
-  const overlay = document.getElementById('pdfOverlay');
-  const closeBtn = document.getElementById('closeOverlay');
-  const preview = document.getElementById('techriderPreview');
-  const overlayFrame = document.getElementById('overlayPdfFrame');
-
-  function openOverlay(){
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    // ensure iframe points to the PDF (in case you change it later)
-    overlayFrame.src = preview.src;
-  }
-
-  function closeOverlay(){
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  // Open when clicking the preview
-  preview.addEventListener('click', openOverlay);
-
-  // Some browsers don't allow click inside iframe content reliably,
-  // so also open when clicking the card wrapper
-  document.getElementById('techriderCard').addEventListener('click', (e) => {
-    // avoid double-open when clicking buttons/links
-    const tag = e.target.tagName.toLowerCase();
-    if (tag === 'a' || tag === 'button') return;
-    openOverlay();
-  });
-
-  closeBtn.addEventListener('click', closeOverlay);
-
-  // Click outside dialog closes
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeOverlay();
-  });
-
-  // ESC closes
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeOverlay();
-  });
-</script>
 
 </body>
 </html>
