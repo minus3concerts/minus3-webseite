@@ -630,5 +630,11 @@ h1, h2, h3 { line-height: 1.2; }
 .event-detail h1 {
   white-space: pre-line;
 }
+/* Event-Titel: Zeilenumbrüche (\n) anzeigen */
+#eventList .card .content strong,
+.event-detail h1 {
+  white-space: pre-line;
+  line-height: 1.15;
+}
 
 
