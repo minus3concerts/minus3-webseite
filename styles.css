@@ -625,5 +625,10 @@ h1, h2, h3 { line-height: 1.2; }
     white-space: pre;
   }
 }
+/* Event-Titel darf Zeilenumbrüche aus dem JSON (\n) anzeigen */
+#eventList .card .content strong,
+.event-detail h1 {
+  white-space: pre-line;
+}
 
 
