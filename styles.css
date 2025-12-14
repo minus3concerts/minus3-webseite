@@ -616,25 +616,24 @@ h1, h2, h3 { line-height: 1.2; }
 /* Nur auf dem Handy */
 @media (max-width: 640px) {
   .hero .subtitle {
-    font-size: 1.2rem;        /* etwas grösser */
+    font-size: 1.2rem;
     line-height: 1.5;
   }
+}
+
 @media (max-width: 640px) {
   .break-mobile::after {
-    content: "\A";          /* Zeilenumbruch */
+    content: "\A";
     white-space: pre;
   }
 }
-/* Event-Titel darf Zeilenumbrüche aus dem JSON (\n) anzeigen */
-#eventList .card .content strong,
-.event-detail h1 {
-  white-space: pre-line;
-}
+
+
 /* Event-Titel: Zeilenumbrüche (\n) anzeigen */
 #eventList .card .content strong,
 .event-detail h1 {
   white-space: pre-line;
-  line-height: 1.15;
+  line-height: 1.25;
 }
 
 
