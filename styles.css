@@ -635,7 +635,3 @@ h1, h2, h3 { line-height: 1.2; }
   white-space: pre-line;
   line-height: 1.25;
 }
-.partner-card .thumb img.partner-logo-zoomout{
-  transform: scale(0.85);
-  transform-origin: center;
-}
