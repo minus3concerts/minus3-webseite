@@ -21,7 +21,7 @@ function slugify(s){
 }
 
 /* =========================
-   Reservation Helpers (NEU)
+   Reservation Helpers
    ========================= */
 function escapeHTML(str){
   return String(str ?? '')
@@ -46,7 +46,6 @@ function renderReservation(ev){
   const url = r.form_url;
   const soldOut = r.sold_out === true;
 
-  // Titel schön formatieren (unterstützt \n im JSON)
   const titleLine = (ev.title || '').replace(/\\n/g,'\n').replace(/\n/g,' / ');
   const eventLine = `${titleLine} — ${formatDate(ev.date)}`;
   const cutoff = r.cutoff_time
@@ -72,7 +71,7 @@ function renderReservation(ev){
   `;
 }
 /* =========================
-   /Reservation Helpers (NEU)
+   /Reservation Helpers
    ========================= */
 
 function makeICS(ev){
@@ -128,13 +127,11 @@ async function initProgramPage(){
       a.href = `event.html?id=${encodeURIComponent(ev.id)}`;
       a.className = 'card';
 
-      // Titel optional am " + " umbrechen. Wenn du das nicht willst, nimm einfach ev.title.
       const titleHTML = (ev.title || '')
-        .replace(/\\n/g, '\n')     // falls irgendwo "\\n" drin ist
-        .replace(/\n/g, '<br>')    // echte Umbrüche -> <br>
-        .replace(' + ', '<br>');   // falls du das noch brauchst
+        .replace(/\\n/g, '\n')
+        .replace(/\n/g, '<br>')
+        .replace(' + ', '<br>');
 
-      // object-position aus JSON (z. B. "50% 20%"), sonst zentriert
       const pos = ev.image_pos && String(ev.image_pos).trim() ? ev.image_pos : 'center';
 
       a.innerHTML = `
@@ -185,9 +182,6 @@ async function initEventPage(){
   if(ev.image){
     img.src = ev.image;
     img.alt = ev.title;
-    // Wenn du auch auf der Detailseite croppen willst, kannst du hier optional:
-    // img.style.objectFit = 'cover';
-    // img.style.objectPosition = ev.image_pos || 'center';
   } else {
     img.style.display = 'none';
   }
@@ -204,40 +198,9 @@ async function initEventPage(){
   const desc = document.getElementById('eventDesc');
   desc.innerHTML = (ev.description || '').split('\n').map(p => `<p>${p}</p>`).join('');
 
-  // --- Tickets: immer Abendkasse + Hinweis (kein Onlineverkauf) ---
-  const ticket = document.getElementById('ticketLink');
-  ticket.removeAttribute('target');
-  ticket.removeAttribute('rel');
-  ticket.removeAttribute('href');
-  ticket.classList.add('ghost');
-  ticket.textContent = 'Tickets: Abendkasse';
-  ticket.addEventListener('click', (e)=> e.preventDefault());
-
-  const note = document.createElement('div');
-  note.className = 'ticket-note';
-  note.innerHTML = `
-    <strong>Tickets</strong><br>
-    Verkauf ausschliesslich an der Abendkasse.<br>
-    Bezahlung: Bar, TWINT oder Karte.<br>
-    <span class="muted">Alle Einnahmen aus dem Ticketverkauf werden als Gage fair unter den Bands aufgeteilt.</span>
-  `;
-  document.querySelector('.cta-row')?.after(note);
-  // --- /Tickets ---
-
-  // Kalender
-  const cal = document.getElementById('calLink');
-  cal.addEventListener('click', e => {
-    e.preventDefault();
-    const url = makeICS(ev);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${slugify(ev.title)}.ics`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1500);
-  });
-
   // Künstlerliste
   const wrap = document.getElementById('artists');
+  wrap.innerHTML = '';
   (ev.artists || []).forEach(a => {
     const row = document.createElement('div');
     row.className = 'artist';
@@ -250,7 +213,7 @@ async function initEventPage(){
     wrap.appendChild(row);
   });
 
-  // Reservation (NEU) – wird nur angezeigt, wenn #reservationBlock existiert
+  // Reservation
   renderReservation(ev);
 }
 
