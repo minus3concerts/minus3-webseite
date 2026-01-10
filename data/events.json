@@ -13,14 +13,15 @@
     "image": "assets/DaysOR.jpg",
     "description": "Metalcoreabend mit Band Days of Ruinn & This Burning Sky.",
     "artists": [
-    { "name": "Days of Ruin", "role": "Headliner" },
-    { "name": "This Burning Sky", "role": "Support" }
-    ]
+      { "name": "Days of Ruin", "role": "Headliner" },
+      { "name": "This Burning Sky", "role": "Support" }
+    ],
     "reservation": {
-    "enabled": true,
-    "capacity": 45,
-    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSe-tgaYZOPE1r1CP9dC_AaqB0VLMRIVRigPAQZaHOAk6r5cWg/viewform?usp=pp_url&entry.703708431=Days+of+Ruin+-+This+Burning+Sky+-+Sa,+24.01.2026",
-    "cutoff_time": "21:00" }
+      "enabled": true,
+      "capacity": 45,
+      "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSe-tgaYZOPE1r1CP9dC_AaqB0VLMRIVRigPAQZaHOAk6r5cWg/viewform?usp=pp_url&entry.703708431=Days+of+Ruin+-+This+Burning+Sky+-+Sa,+24.01.2026",
+      "cutoff_time": "21:00"
+    }
   },
   {
     "id": "2025-12-20-bern-konzert-z",
@@ -36,17 +37,18 @@
     "image": "assets/FromAshes.jpg",
     "image_pos": "50% 20%",
     "description": "Ein lauter Rock-Abend mit From Ashes to Earth & Shortcut 2 Infinity.",
-     "artists": [
-    { "name": "From Ashes to Earth", "role": "Headliner" },
-    { "name": "Shortcut 2 Infinity", "role": "Support" }
-    ]
+    "artists": [
+      { "name": "From Ashes to Earth", "role": "Headliner" },
+      { "name": "Shortcut 2 Infinity", "role": "Support" }
+    ],
     "reservation": {
-    "enabled": true,
-    "capacity": 45,
-    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSe-tgaYZOPE1r1CP9dC_AaqB0VLMRIVRigPAQZaHOAk6r5cWg/viewform?usp=pp_url&entry.703708431=From+Ashes+to+Earth+-+Shortcut+2+Infinity+-+Sa,+28.02.2026",
-    "cutoff_time": "21:00" }
+      "enabled": true,
+      "capacity": 45,
+      "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSe-tgaYZOPE1r1CP9dC_AaqB0VLMRIVRigPAQZaHOAk6r5cWg/viewform?usp=pp_url&entry.703708431=From+Ashes+to+Earth+-+Shortcut+2+Infinity+-+Sa,+28.02.2026",
+      "cutoff_time": "21:00"
+    }
   },
-    {
+  {
     "id": "2025-12-20-bern-konzert-u",
     "title": "Leave The Ghosts Behind\nBand X",
     "date": "2026-03-28",
@@ -59,14 +61,15 @@
     "genre": "Post-Hardcore",
     "image": "assets/partner1.jpg",
     "description": "Post-Hardcore Heimspiel.",
-     "artists": [
-    { "name": "Leave The Ghosts Behind", "role": "Headliner" },
-    { "name": "Band X", "role": "Support" }
-    ]
+    "artists": [
+      { "name": "Leave The Ghosts Behind", "role": "Headliner" },
+      { "name": "Band X", "role": "Support" }
+    ],
     "reservation": {
-    "enabled": true,
-    "capacity": 45,
-    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSe-tgaYZOPE1r1CP9dC_AaqB0VLMRIVRigPAQZaHOAk6r5cWg/viewform?usp=pp_url&entry.703708431=Leave+The+Ghosts+Behind+-+Sa,+28.03.2026",
-    "cutoff_time": "21:00" }
+      "enabled": true,
+      "capacity": 45,
+      "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSe-tgaYZOPE1r1CP9dC_AaqB0VLMRIVRigPAQZaHOAk6r5cWg/viewform?usp=pp_url&entry.703708431=Leave+The+Ghosts+Behind+-+Sa,+28.03.2026",
+      "cutoff_time": "21:00"
+    }
   }
 ]
