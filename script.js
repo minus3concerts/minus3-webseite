@@ -20,6 +20,61 @@ function slugify(s){
     .slice(0,80);
 }
 
+/* =========================
+   Reservation Helpers (NEU)
+   ========================= */
+function escapeHTML(str){
+  return String(str ?? '')
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'","&#039;");
+}
+
+function renderReservation(ev){
+  const el = document.getElementById('reservationBlock');
+  if(!el) return;
+
+  const r = ev.reservation;
+  if(!r || r.enabled === false){
+    el.innerHTML = `<p class="muted">Für dieses Event ist keine Reservation nötig.</p>`;
+    return;
+  }
+
+  const capacity = r.capacity ?? 50;
+  const url = r.form_url;
+  const soldOut = r.sold_out === true;
+
+  // Titel schön formatieren (unterstützt \n im JSON)
+  const titleLine = (ev.title || '').replace(/\\n/g,'\n').replace(/\n/g,' / ');
+  const eventLine = `${titleLine} — ${formatDate(ev.date)}`;
+  const cutoff = r.cutoff_time
+    ? `Gültig bis <strong>${escapeHTML(r.cutoff_time)}</strong> – danach werden freie Plätze vergeben.`
+    : '';
+
+  el.innerHTML = `
+    <div class="reserve-card ${soldOut ? 'is-soldout' : ''}">
+      <p class="reserve-title"><strong>Gratis Platzreservation</strong></p>
+      <p class="muted">${escapeHTML(eventLine)}</p>
+      ${cutoff ? `<p class="reserve-cutoff">${cutoff}</p>` : ''}
+      <p class="muted reserve-meta">Limit: <strong>${capacity}</strong> Plätze</p>
+
+      ${
+        soldOut
+          ? `<div class="reserve-status"><strong>Ausverkauft.</strong> Du kannst trotzdem spontan an der Abendkasse vorbeikommen – falls Plätze frei werden.</div>`
+          : (url
+              ? `<a class="btn" href="${url}" target="_blank" rel="noopener">Jetzt gratis reservieren</a>`
+              : `<p class="muted">Reservation-Link fehlt (form_url).</p>`
+            )
+      }
+    </div>
+  `;
+}
+/* =========================
+   /Reservation Helpers (NEU)
+   ========================= */
+
 function makeICS(ev){
   const dt = (date, time) => {
     const [hh, mm] = (time||'00:00').split(':').map(Number);
@@ -75,10 +130,9 @@ async function initProgramPage(){
 
       // Titel optional am " + " umbrechen. Wenn du das nicht willst, nimm einfach ev.title.
       const titleHTML = (ev.title || '')
-  .replace(/\\n/g, '\n')     // falls irgendwo "\\n" drin ist
-  .replace(/\n/g, '<br>')    // echte Umbrüche -> <br>
-  .replace(' + ', '<br>');   // falls du das noch brauchst
-
+        .replace(/\\n/g, '\n')     // falls irgendwo "\\n" drin ist
+        .replace(/\n/g, '<br>')    // echte Umbrüche -> <br>
+        .replace(' + ', '<br>');   // falls du das noch brauchst
 
       // object-position aus JSON (z. B. "50% 20%"), sonst zentriert
       const pos = ev.image_pos && String(ev.image_pos).trim() ? ev.image_pos : 'center';
@@ -195,6 +249,9 @@ async function initEventPage(){
       </div>`;
     wrap.appendChild(row);
   });
+
+  // Reservation (NEU) – wird nur angezeigt, wenn #reservationBlock existiert
+  renderReservation(ev);
 }
 
 async function initPastPage(){
