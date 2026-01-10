@@ -11,7 +11,7 @@
     "address": "Freiburgstrasse 139c, 3008 Bern",
     "genre": "Metalcore",
     "image": "assets/DaysOR.jpg",
-    "description": "Metalcoreabend mit Band Days of Ruinn & This Burning Sky.",
+    "description": "Metalcoreabend mit Band Days of Ruin & This Burning Sky.",
     "artists": [
       { "name": "Days of Ruin", "role": "Headliner" },
       { "name": "This Burning Sky", "role": "Support" }
