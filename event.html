@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/logo.png" type="image/png" />
 </head>
 <body>
-  
+
   <header class="site-header">
     <a class="brand" href="index.html">
       <img src="assets/logo.png" alt="minus 3 Logo" />
@@ -28,7 +28,6 @@
 
   <main class="container">
     <article id="event" class="event-detail">
-      <!-- Zurück-Button mit History-Fallback -->
       <a class="btn link" href="index.html"
          onclick="if (history.length > 1) { history.back(); return false; }">
         ← Zurück
@@ -42,6 +41,8 @@
       </header>
 
       <div class="detail-grid">
+
+        <!-- 1) INFOS (kompakt, ohne Buttons) -->
         <section>
           <h2>Infos</h2>
           <ul class="meta-list">
@@ -50,27 +51,36 @@
             <li><strong>Start:</strong> <span id="eventStart"></span></li>
             <li><strong>Ort:</strong> <span id="eventVenue"></span></li>
           </ul>
-          <div class="cta-row">
-            <a id="ticketLink" class="btn" target="_blank" rel="noopener">Tickets</a>
-            <a id="calLink" class="btn ghost">In Kalender</a>
-            <a class="btn ghost" href="anreise.html">Anreise</a>
-          </div>
         </section>
 
-        <section>
-          <h2>Künstler</h2>
-          <div id="artists" class="artists"></div>
-        </section>
-        
+        <!-- 2) RESERVATION (Haupt-CTA) -->
         <section>
           <h2>Reservation</h2>
           <div id="reservationBlock"></div>
         </section>
-        
+
+        <!-- 3) KÜNSTLER -->
+        <section>
+          <h2>Künstler</h2>
+          <div id="artists" class="artists"></div>
+        </section>
+
+        <!-- 4) BESCHREIBUNG -->
         <section>
           <h2>Beschreibung</h2>
           <div id="eventDesc" class="prose"></div>
         </section>
+
+        <!-- 5) TICKETS (ruhige Info, kein Button) -->
+        <section>
+          <h2>Tickets</h2>
+          <div class="ticket-note">
+            <strong>Abendkasse</strong><br>
+            Bezahlung: Bar, TWINT oder Karte.<br>
+            <span class="muted">Alle Einnahmen aus dem Ticketverkauf werden als Gage fair unter den Bands aufgeteilt.</span>
+          </div>
+        </section>
+
       </div>
     </article>
   </main>
@@ -79,7 +89,6 @@
     <p>&copy; <span id="year"></span> minus 3</p>
   </footer>
 
-  <!-- JS -->
   <script src="script.js" defer></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
