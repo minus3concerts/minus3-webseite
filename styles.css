@@ -457,9 +457,14 @@ h1, h2, h3 { line-height: 1.2; }
   opacity: 0 !important;
   pointer-events: none !important;
 }
-/* Spezieller Zuschnitt nur für Will */
+/* Spezieller Zuschnitt nur für Finn */
 .portrait-top {
   object-position: center 20%;
+}
+
+/* Spezieller Zuschnitt nur für Will */
+.portrait-top2 {
+  object-position: center 30%;
 }
 /* Ticket-Hinweis unter den Buttons */
 .ticket-note{
