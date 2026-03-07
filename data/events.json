@@ -1,33 +1,8 @@
 [
   {
-    "id": "2025-12-20-bern-konzert-z",
-    "title": "From Ashes to Earth\nShortcut 2 Infinity",
-    "date": "2026-02-28",
-    "door_time": "20:00",
-    "start_time": "21:00",
-    "end_time": "24:00",
-    "city": "Bern",
-    "venue": "minus 3",
-    "address": "Freiburgstrasse 139c, 3008 Bern",
-    "genre": "Alternative Rock",
-    "image": "assets/FromAshes.png",
-    "image_pos": "50% 20%",
-    "description": "Ein lauter Rock-Abend mit From Ashes to Earth & Shortcut 2 Infinity.",
-    "artists": [
-      { "name": "From Ashes to Earth", "role": "Headliner" },
-      { "name": "Shortcut 2 Infinity", "role": "Support" }
-    ],
-    "reservation": {
-      "enabled": true,
-      "capacity": 45,
-      "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSe-tgaYZOPE1r1CP9dC_AaqB0VLMRIVRigPAQZaHOAk6r5cWg/viewform?usp=pp_url&entry.703708431=From+Ashes+to+Earth+-+Shortcut+2+Infinity+-+Sa,+28.02.2026",
-      "cutoff_time": "21:00"
-    }
-  },
-  {
     "id": "2025-12-20-bern-konzert-u",
     "title": "Leave The Ghosts Behind\nBand X",
-    "date": "2026-03-28",
+    "date": "2026-10-XX",
     "door_time": "20:00",
     "start_time": "21:00",
     "end_time": "24:00",
